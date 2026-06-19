@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is Organic Food Worth It? | Khadija Mustafa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #080c10;
+  --bg2: #0e1318;
+  --bg3: #141a22;
+  --card: #111720;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #e8edf3;
+  --muted: #7a8a9a;
+  --accent: #4fd8c4;
+  --accent2: #7eb8f7;
+  --accent3: #f7c06e;
+  --red: #f27d7d;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.7; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 64px;
+  background: rgba(8,12,16,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
+.nav-logo span { color: var(--accent); }
+.nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.03em; }
+.nav-back:hover { color: var(--accent); }
+
+/* ARTICLE HERO */
+.article-hero {
+  padding: 120px 2.5rem 60px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.article-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.article-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.article-label::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
+.article-date { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.article-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 0.7rem; font-family: var(--mono); padding: 3px 9px; border-radius: 4px; background: rgba(79,216,196,0.1); color: var(--accent); border: 1px solid rgba(79,216,196,0.2); }
+.tag.amber { background: rgba(247,192,110,0.1); color: var(--accent3); border-color: rgba(247,192,110,0.2); }
+.tag.blue { background: rgba(126,184,247,0.1); color: var(--accent2); border-color: rgba(126,184,247,0.2); }
+
+h1.article-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+h1.article-title em { font-style: italic; color: var(--accent); }
+.article-subtitle { color: var(--muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2rem; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); max-width: 800px; margin: 0 auto; }
+
+/* ARTICLE BODY */
+.article-body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+
+/* INFOGRAPHIC */
+.infographic-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.infographic-wrap img {
+  width: 100%;
+  display: block;
+}
+.infographic-caption {
+  padding: 1rem 1.5rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  border-top: 1px solid var(--border);
+}
+
+/* POST CONTENT */
+.post-intro {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.post-intro em { font-style: italic; color: var(--muted); }
+
+.post-section { margin-bottom: 2rem; }
+.post-section h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.post-section p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+.post-section p strong { color: var(--text); font-weight: 600; }
+
+/* STAT CALLOUTS */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.stat-chip {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+.stat-chip .num {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-chip .num.amber { color: var(--accent3); }
+.stat-chip .num.blue { color: var(--accent2); }
+.stat-chip .lbl {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* CHEAT SHEET */
+.cheat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.cheat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.cheat-card.yes { border-color: rgba(79,216,196,0.3); }
+.cheat-card.no { border-color: rgba(242,125,125,0.2); }
+.cheat-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+.cheat-label.yes { color: var(--accent); }
+.cheat-label.no { color: var(--red); }
+.cheat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cheat-list li {
+  font-size: 0.85rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cheat-list li::before { font-size: 0.75rem; }
+.cheat-card.yes .cheat-list li::before { content: '✓'; color: var(--accent); }
+.cheat-card.no .cheat-list li::before { content: '✗'; color: var(--red); }
+
+/* PRICE CALLOUT */
+.price-callout {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.price-item { text-align: center; flex: 1; min-width: 120px; }
+.price-item .price { font-family: var(--serif); font-size: 2rem; color: var(--accent3); line-height: 1; margin-bottom: 4px; }
+.price-item .price.muted { color: var(--muted); }
+.price-item .label { font-size: 0.75rem; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.price-vs { font-family: var(--serif); font-size: 1.2rem; color: var(--border2); }
+
+/* CONCLUSION */
+.conclusion {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+/* SOURCES */
+.sources {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+.sources h3 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.sources ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sources li { font-size: 0.82rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--border2); }
+.sources li strong { color: var(--text); }
+.sources .note { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; font-family: var(--mono); font-style: italic; }
+
+/* LINKEDIN CTA */
+.linkedin-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(126,184,247,0.05);
+  border: 1px solid rgba(126,184,247,0.2);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.linkedin-cta:hover { border-color: var(--accent2); }
+.linkedin-cta .li-icon { font-size: 1.5rem; flex-shrink: 0; }
+.linkedin-cta .li-text { font-size: 0.875rem; color: var(--muted); }
+.linkedin-cta .li-text strong { display: block; color: var(--accent2); font-size: 0.9rem; margin-bottom: 2px; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
+.footer-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-size: 0.8rem; color: var(--muted); }
+.footer-copy a { color: var(--accent); text-decoration: none; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  nav { padding: 0 1.25rem; }
+  .article-hero, .article-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .cheat-grid { grid-template-columns: 1fr; }
+  .price-callout { flex-direction: column; gap: 1rem; }
+  .price-vs { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Khadija <span>The Analyst</span></a>
+  <a class="nav-back" href="index.html#projects">← Back to projects</a>
+</nav>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="article-meta">
+    <div class="article-label">Data Storytelling</div>
+    <span class="article-date">June 2026 · Luxembourg</span>
+  </div>
+  <div class="article-tags" style="margin-bottom:1.25rem;">
+    <span class="tag">343 Studies</span>
+    <span class="tag">80,000+ Products</span>
+    <span class="tag amber">Food Science</span>
+    <span class="tag blue">Consumer Data</span>
+  </div>
+  <h1 class="article-title">Is Organic Food Worth It — <em>or Just Expensive Marketing?</em></h1>
+  <p class="article-subtitle">A data-driven analysis of 80,000+ products and 343 peer-reviewed studies. Triggered by a €5.49 box of bio eggs in Luxembourg.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <!-- INFOGRAPHIC -->
+  <div class="infographic-wrap">
+    <img src="images/organic-food-infographic.jpg" alt="Is Organic Food Worth It — Or Just Expensive Marketing? Infographic" />
+    <div class="infographic-caption">Data sources: Baranski et al. (2014), Leiba et al. (2021), Srednicka-Tober et al. (2016), Jiang et al. (2024), Open Food Facts</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="post-intro">
+    I spent €5.49 on a box of 6 bio eggs last week and then immediately questioned every decision I've ever made.<br><br>
+    Everyone says organic is better than conventional. So I did what any slightly unhinged person does at 11pm — I actually looked at the data. 343 peer-reviewed studies, 80,000+ products, several cups of tea I forgot to drink.<br><br>
+    <em>Here's what I found — and it's more nuanced than the marketing wants you to believe.</em>
+  </div>
+
+  <!-- PRICE HOOK -->
+  <div class="post-section">
+    <h2>The €5.49 question</h2>
+    <p>Conventional eggs at Auchan Luxembourg: <strong>~€3.25 for 12</strong>. Bio eggs: <strong>~€5.49 for 6</strong>. That's roughly 3× the price per egg. So is it actually worth it?</p>
+    <div class="price-callout">
+      <div class="price-item">
+        <div class="price muted">€3.25</div>
+        <div class="label">Conventional · 12 eggs</div>
+      </div>
+      <div class="price-vs">vs</div>
+      <div class="price-item">
+        <div class="price">€5.49</div>
+        <div class="label">Bio · 6 eggs</div>
+      </div>
+      <div class="price-item">
+        <div class="price">3×</div>
+        <div class="label">Price per egg</div>
+      </div>
+    </div>
+    <p>Let's see what the data actually says.</p>
+  </div>
+
+  <!-- PESTICIDES -->
+  <div class="post-section">
+    <h2>Where the science is strongest: Pesticides</h2>
+    <p>Conventional crops show <strong>4× higher frequency</strong> of detectable pesticide residues than organic crops. When people switch to organic, organophosphate levels in blood and urine drop <strong>17–55%</strong> depending on the compound.</p>
+    <p>Organophosphates are neurotoxins. At low chronic doses, they've been linked in epidemiological research to developmental delays and reduced cognitive performance in children. This one matters.</p>
+  </div>
+
+  <!-- ANTIOXIDANTS -->
+  <div class="post-section">
+    <h2>Antioxidants: A real, measurable difference</h2>
+    <p>Organic produce contains substantially higher concentrations of polyphenols and flavonoids — and this is backed by hard data:</p>
+    <div class="stat-row">
+      <div class="stat-chip"><div class="num">+69%</div><div class="lbl">Flavanones</div></div>
+      <div class="stat-chip"><div class="num">+51%</div><div class="lbl">Anthocyanins</div></div>
+      <div class="stat-chip"><div class="num">+50%</div><div class="lbl">Flavonols</div></div>
+      <div class="stat-chip"><div class="num">+17%</div><div class="lbl">Total antioxidants</div></div>
+    </div>
+    <p>Polyphenols are associated with reduced inflammation and lower risk of cardiovascular disease and certain cancers. That said — concentration differences in food don't automatically translate to health outcomes in humans. Bioavailability, cooking methods, and overall dietary patterns all interact.</p>
+  </div>
+
+  <!-- DAIRY -->
+  <div class="post-section">
+    <h2>Dairy & Eggs: One of the clearest wins</h2>
+    <p>Organic cows graze on pasture longer, and their milk (and eggs) show significantly higher levels of key beneficial fats. The mechanism is well-understood: diet directly affects fatty acid composition.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><div class="num">+55%</div><div class="lbl">Omega-3 fatty acids</div></div>
+      <div class="stat-chip"><div class="num amber">+35%</div><div class="lbl">CLA (linoleic acid)</div></div>
+      <div class="stat-chip"><div class="num blue">+41%</div><div class="lbl">Vaccenic acid</div></div>
+    </div>
+    <p>These are not trivial differences. This is why bio eggs are one of the cases where the data actually says: yes, the premium is justified.</p>
+  </div>
+
+  <!-- WHERE PREMIUM IS HARD -->
+  <div class="post-section">
+    <h2>Where I've been wasting money</h2>
+    <p>Differences in vitamins and minerals between organic and conventional produce are minimal and often statistically insignificant. If someone is selling you organic food primarily on the basis of higher Vitamin C, iron, zinc, calcium, or magnesium — the data doesn't support that claim.</p>
+    <p>I have been paying premium prices for <strong>vibes</strong>.</p>
+  </div>
+
+  <!-- CHEAT SHEET -->
+  <div class="post-section">
+    <h2>The actual cheat sheet nobody gives you</h2>
+    <div class="cheat-grid">
+      <div class="cheat-card yes">
+        <div class="cheat-label yes">Prioritise organic for</div>
+        <ul class="cheat-list">
+          <li>Eggs & dairy products</li>
+          <li>Strawberries</li>
+          <li>Spinach</li>
+          <li>Apples</li>
+          <li>Bell peppers</li>
+          <li>Grapes</li>
+          <li>Food for young children</li>
+        </ul>
+      </div>
+      <div class="cheat-card no">
+        <div class="cheat-label no">Save your money on</div>
+        <ul class="cheat-list">
+          <li>Avocados</li>
+          <li>Pineapples</li>
+          <li>Onions</li>
+          <li>Sweet corn</li>
+          <li>Vitamin supplements labelled organic</li>
+          <li>Organic snacks & processed food</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;">The "Dirty Dozen" crops (strawberries, spinach, apples, grapes, bell peppers) absorb pesticides through their thin skins — those are the ones that matter. Thick-skinned produce like avocados and pineapples have naturally low residue regardless of how they're grown.</p>
+  </div>
+
+  <!-- SURPRISE FINDING -->
+  <div class="post-section">
+    <h2>The finding that surprised me most</h2>
+    <p>Across 80,000+ products, organic-labelled <strong>packaged food</strong> tends to have lower total sugar, lower sodium, fewer ultra-processed ingredients, and less trans-fat. Not because "organic = healthy" — but because brands that bother to certify organic tend to formulate more conservatively across the board.</p>
+    <p>It's a correlation, not causation. But it's worth knowing.</p>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    "Organic is not a scam. But neither is it uniformly superior, and the premium is often disproportionate to the documented benefit. Be selective, not all-or-nothing."
+  </div>
+
+  <p style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem;">Now if you'll excuse me, I need to return this €5.49 egg decision to the "probably worth it actually" column and move on with my life.</p>
+
+  <!-- LINKEDIN CTA -->
+  <a class="linkedin-cta" href="https://www.linkedin.com/in/khadija-mustafa-98344527b/" target="_blank">
+    <span class="li-icon">💼</span>
+    <div class="li-text">
+      <strong>Read the discussion on LinkedIn</strong>
+      Join the conversation — what's your take on the bio premium?
+    </div>
+  </a>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <h3>📚 Data Sources</h3>
+    <ul>
+      <li><strong>Baranski et al. (2014)</strong> — Higher antioxidant and lower cadmium concentrations in organically grown crops. British Journal of Nutrition, 112(5), 794–811.</li>
+      <li><strong>Leiba et al. (2021)</strong> — Packaged Foods Labeled as Organic Have a More Healthful Profile. Nutrients, 13(9), 3020.</li>
+      <li><strong>Srednicka-Tober et al. (2016)</strong> — Composition differences between organic and conventional dairy products. British Journal of Nutrition, 115(6), 994–1011.</li>
+      <li><strong>Jiang et al. (2024)</strong> — The effects of organic food on human health: meta-analysis of 50 population studies.</li>
+      <li><strong>Open Food Facts</strong> — world.openfoodfacts.org/data · 80,000+ product database.</li>
+    </ul>
+    <p class="note">* Prices approximate, based on Luxembourg supermarket averages (Auchan, 2025).</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 <a href="index.html">Khadija Mustafa</a>. Data analyst · Luxembourg.</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/khadija-mustafa-98344527b/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/KhadijaTheAnalyst/" target="_blank">GitHub</a>
+      <a href="mailto:engr.khadija.hussain@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
