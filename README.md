@@ -3,7 +3,6 @@
 My personal portfolio site, built and hosted on GitHub Pages at [khadijatheanalyst.github.io](https://khadijatheanalyst.github.io).
 
 ![Portfolio site screenshot](visuals/site_screenshot.png)
-*(Replace this with a screenshot of the live site homepage. Export it as a PNG, commit it to a visuals/ folder, and update the path above.)*
 
 ---
 
