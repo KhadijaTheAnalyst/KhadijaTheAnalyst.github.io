@@ -152,6 +152,20 @@ h3.project-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 
 .cert-org { font-size: 0.78rem; color: var(--accent3); font-weight: 500; margin-bottom: 0.5rem; font-family: var(--mono); }
 .cert-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
+/* REVIEWS */
+.reviews-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-bottom: 2rem; padding: 1.25rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+.reviews-score { display: flex; align-items: baseline; gap: 10px; }
+.reviews-score-num { font-family: var(--serif); font-size: 2rem; color: var(--text); line-height: 1; }
+.review-stars { color: var(--accent3); letter-spacing: 2px; font-size: 0.95rem; }
+.reviews-meta { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+.reviews-endorsements { display: flex; flex-wrap: wrap; gap: 6px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.review-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; transition: border-color 0.2s; }
+.review-card:hover { border-color: var(--border2); }
+.review-card blockquote { font-size: 0.9rem; color: var(--text); line-height: 1.65; margin: 0.875rem 0 1.25rem; flex: 1; }
+.review-job { font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.review-meta { font-size: 0.72rem; color: var(--muted); font-family: var(--mono); }
+
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: start; }
 .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
@@ -227,6 +241,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
   <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -599,6 +614,81 @@ footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         See all posts on LinkedIn
       </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CLIENT REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-label">Client feedback</div>
+      <h2 class="section-title">What clients <em>say</em></h2>
+    </div>
+    <div class="reviews-summary fade-up">
+      <div class="reviews-score">
+        <span class="reviews-score-num">5.0</span>
+        <span class="review-stars" aria-hidden="true">★★★★★</span>
+      </div>
+      <div class="reviews-meta">9 / 9 completed Upwork jobs rated 5.0</div>
+      <div class="reviews-endorsements">
+        <span class="tool-tag">Committed to Quality ×6</span>
+        <span class="tool-tag">Reliable ×5</span>
+        <span class="tool-tag blue">Clear Communicator ×4</span>
+        <span class="tool-tag blue">Detail Oriented ×4</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“I want to sincerely thank Khadija for her outstanding support with our recent market analysis. Her research was thorough, well-structured, and delivered with a strong understanding of the brief. …”</blockquote>
+        <figcaption>
+          <div class="review-job">Data Researcher for Local Insights</div>
+          <div class="review-meta">Upwork · Apr – Jun 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“Khadija did a great job with the audio annotation and data labelling project across two languages. She was thorough, reliable, clear communicator, and very nice to work with. …”</blockquote>
+        <figcaption>
+          <div class="review-job">Audio Annotation / Data Labelling</div>
+          <div class="review-meta">Upwork · Jun – Sep 2026</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“Great experience working with Khadija. She completed the work in a timely manner and was detail oriented.”</blockquote>
+        <figcaption>
+          <div class="review-job">Extract Power BI Graphs into SVG</div>
+          <div class="review-meta">Upwork · Jul – Aug 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“Khadijah was great, very quick and did everything I asked for - highly recommend!”</blockquote>
+        <figcaption>
+          <div class="review-job">Ultimate Budget Tracker in Excel</div>
+          <div class="review-meta">Upwork · Oct – Nov 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“Excellent job—fast, reliable, and high quality. I’m happy to recommend this freelancer.”</blockquote>
+        <figcaption>
+          <div class="review-job">Store Visit, Antwerp · Enterprise client</div>
+          <div class="review-meta">Upwork · Mar 2026</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <div class="review-stars" aria-label="Rated 5.0 out of 5">★★★★★</div>
+        <blockquote>“Completed the task quickly and executed it perfectly.”</blockquote>
+        <figcaption>
+          <div class="review-job">NFC ID Card Mobile App Testing</div>
+          <div class="review-meta">Upwork · Feb 2026</div>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
