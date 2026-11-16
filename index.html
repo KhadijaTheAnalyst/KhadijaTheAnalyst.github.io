@@ -166,6 +166,11 @@ h3.project-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 
 .review-job { font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
 .review-meta { font-size: 0.72rem; color: var(--muted); font-family: var(--mono); }
 
+.reviews-group-label { font-size:0.72rem; font-family:var(--mono); color:var(--accent3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.25rem; }
+.review-name { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.review-role { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; line-height: 1.4; }
+.review-source-li { align-self:flex-start; display:inline-block; font-size:0.65rem; font-family:var(--mono); padding:2px 7px; border-radius:4px; background:rgba(126,184,247,0.1); color:var(--accent2); border:1px solid rgba(126,184,247,0.2); letter-spacing:0.04em; }
+
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: start; }
 .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
@@ -632,9 +637,70 @@ footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
 <section id="reviews">
   <div class="section-inner">
     <div class="section-header fade-up">
-      <div class="section-label">Client feedback</div>
-      <h2 class="section-title">What clients <em>say</em></h2>
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What clients &amp; colleagues <em>say</em></h2>
     </div>
+    <p class="reviews-group-label">💼 LinkedIn recommendations · 6</p>
+    <div class="reviews-grid">
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“…she quickly distinguished herself as one of the most capable and committed students. … Her capacity to translate complex data into meaningful insights made her a standout in the program.”</blockquote>
+        <figcaption>
+          <div class="review-name">Alexandra Nastase</div>
+          <div class="review-role">Data &amp; AI Lead · Co-founder, WeSTEM+</div>
+          <div class="review-meta">Her teacher at BI Academy · May 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“Khadija consistently demonstrated a strong analytical mindset and a keen eye for detail, which were crucial in developing accurate and insightful reports. Her ability to grasp complex concepts quickly and apply them effectively was impressive.”</blockquote>
+        <figcaption>
+          <div class="review-name">Raluca-Maria Bălă</div>
+          <div class="review-role">Data Science Manager, Rockwell Automation</div>
+          <div class="review-meta">Her mentor at BI Academy · Oct 2024</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“I also had the opportunity to review the Power BI dashboard she presented at the end of the BI Academy. Her storytelling and presentation skills were truly outstanding, clearly reflecting a deep understanding of data and how to communicate insights effectively.”</blockquote>
+        <figcaption>
+          <div class="review-name">Hashini Liyanage</div>
+          <div class="review-role">Power BI · SQL · Python · ETL · BI</div>
+          <div class="review-meta">Fellow volunteer, Girls in Tech &amp; WeSTEM+ · May 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“As a Circular Economy Manager Assistant, she brought enthusiasm, responsibility, and strong analytical skills to the team. She quickly understood complex topics, supported projects efficiently, and was always open to feedback and collaboration.”</blockquote>
+        <figcaption>
+          <div class="review-name">Dawit Habteab</div>
+          <div class="review-role">Teacher and administrative officer</div>
+          <div class="review-meta">Same team · Jan 2026</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“Khadija Mustafa is a highly professional and reliable team member. She consistently demonstrates strong analytical skills, attention to detail, and a proactive approach to her work.”</blockquote>
+        <figcaption>
+          <div class="review-name">Ermias Andemichael Haile</div>
+          <div class="review-role">Administrative Assistant · HR Operations Coordinator</div>
+          <div class="review-meta">Same team · Jan 2026</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card fade-up">
+        <span class="review-source-li">LinkedIn recommendation</span>
+        <blockquote>“From the outset, Khadija quickly grasped complex concepts and applied them effectively in our projects. … Her attention to detail and commitment to delivering high-quality work have made a significant difference in our team’s productivity.”</blockquote>
+        <figcaption>
+          <div class="review-name">Ayesha Ghulam Rasool</div>
+          <div class="review-role">Principal Engineer – Hydraulics</div>
+          <div class="review-meta">Senior colleague, Osmani &amp; Company · Oct 2024</div>
+        </figcaption>
+      </figure>
+    </div>
+    <div style="display:flex; justify-content:center; margin:2rem 0 3.5rem;">
+      <a href="https://www.linkedin.com/in/khadija-mustafa-98344527b/details/recommendations/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.82rem;">Read all 6 full recommendations on LinkedIn →</a>
+    </div>
+    <p class="reviews-group-label">⭐ Upwork client reviews</p>
     <div class="reviews-summary fade-up">
       <div class="reviews-score">
         <span class="reviews-score-num">5.0</span>
