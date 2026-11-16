@@ -944,11 +944,12 @@ footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
       <div class="fade-up">
         <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-row">
-            <div class="form-group"><label>Name</label><input type="text" placeholder="Your name" required /></div>
-            <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
+            <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required /></div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required /></div>
           </div>
-          <div class="form-group"><label>Subject</label><input type="text" placeholder="What's this about?" /></div>
-          <div class="form-group"><label>Message</label><textarea placeholder="Tell me about your project or opportunity…" required></textarea></div>
+          <div class="form-group"><label>Subject</label><input type="text" name="subject" placeholder="What's this about?" /></div>
+          <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project or opportunity…" required></textarea></div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px;" />
           <button class="btn-submit" type="submit">Send message →</button>
         </form>
       </div>
@@ -988,16 +989,46 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // Contact form
-function handleSubmit(e) {
+// Set to your Formspree endpoint (e.g. "https://formspree.io/f/abcdwxyz").
+// While empty, the form opens the visitor's email app instead.
+const FORM_ENDPOINT = "";
+const CONTACT_EMAIL = "engr.khadija.hussain@gmail.com";
+
+function resetSubmitButton(btn) {
+  setTimeout(() => { btn.textContent = 'Send message →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+}
+
+function openMailFallback(data) {
+  const subject = data.get('subject') || 'Portfolio enquiry';
+  const body = `${data.get('message')}\n\n— ${data.get('name')} (${data.get('email')})`;
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+async function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
+  const form = e.target;
+  const btn = form.querySelector('.btn-submit');
+  const data = new FormData(form);
+
+  if (!FORM_ENDPOINT) {
+    openMailFallback(data);
+    return;
+  }
+
   btn.textContent = 'Sending…';
-  setTimeout(() => {
+  btn.disabled = true;
+  try {
+    const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     btn.textContent = '✓ Message sent!';
     btn.style.background = '#4ade80';
-    e.target.reset();
-    setTimeout(() => { btn.textContent = 'Send message →'; btn.style.background = ''; }, 3000);
-  }, 1000);
+    form.reset();
+  } catch (err) {
+    btn.textContent = 'Couldn’t send. Opening email…';
+    btn.style.background = '#f27d7d';
+    openMailFallback(data);
+  }
+  resetSubmitButton(btn);
 }
 
 // Active nav highlight
