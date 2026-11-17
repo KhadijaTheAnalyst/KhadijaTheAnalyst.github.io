@@ -1130,6 +1130,28 @@ document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Visitor stats (GoatCounter): count clicks on key links as events
+function trackEvent(path, title) {
+  try {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: title, event: true });
+  } catch (e) {}
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]');
+  if (!a) return;
+  const href = a.getAttribute('href');
+  if (a.classList.contains('nav-cta')) return trackEvent('click-hire-me', 'Hire me button');
+  const rules = [
+    [/malt\.com/, 'click-malt', 'Malt profile'],
+    [/upwork\.com/, 'click-upwork', 'Upwork profile'],
+    [/linkedin\.com/, 'click-linkedin', 'LinkedIn'],
+    [/credly\.com/, 'click-credly', 'Credly badge'],
+    [/github\.com/, 'click-github', 'GitHub'],
+    [/^mailto:/, 'click-email', 'Email link'],
+  ];
+  for (const [re, path, title] of rules) if (re.test(href)) return trackEvent(path, title);
+});
+
 // Contact form
 // Set to your Formspree endpoint (e.g. "https://formspree.io/f/abcdwxyz").
 // While empty, the form opens the visitor's email app instead.
@@ -1163,6 +1185,7 @@ async function handleSubmit(e) {
     const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     btn.textContent = '✓ Message sent!';
+    trackEvent('contact-form-sent', 'Contact form: message sent');
     btn.style.background = '#4ade80';
     form.reset();
   } catch (err) {
@@ -1224,5 +1247,6 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
+<script data-goatcounter="https://kmportfolio.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
